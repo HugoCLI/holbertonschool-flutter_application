@@ -1,22 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/src/painting/edge_insets.dart';
-import 'package:flutter/src/painting/box_decoration.dart';
-import 'dart:ui';
+import 'package:flutter/painting.dart';
 
-void main() => runApp(MyApp());
+void main() {
 
-class MyApp extends StatefulWidget  {
-  @override
-  LoginPage createState() => LoginPage();
+
+  runApp(
+    MaterialApp(
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(
+            fontFamily: 'AktivGrotesk',
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
+      home: const MyApp(),
+    ),
+  );
 }
 
 
-class LoginPage extends State<MyApp> {
-  bool showNewWidget = false;
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    ImageProvider holbertonwhite = const AssetImage(
+      'holberton_school_logo.png',
+    );
     return Scaffold(
         backgroundColor: const Color(0xFF121212),
         resizeToAvoidBottomInset: false,
@@ -24,9 +48,10 @@ class LoginPage extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                'https://images.squarespace-cdn.com/content/v1/60bf70d860f31b4f60455443/7e02aa09-0395-4fa0-8639-67c3cb77f062/Holberton+School+Logo+white_fog.png',
-                height: 50,
+              Image(
+                image: holbertonwhite,
+                width: 300
+
               ),
               const SizedBox(height: 16),
               Container(
@@ -34,12 +59,12 @@ class LoginPage extends State<MyApp> {
                   left: MediaQuery.of(context).size.width * 0.2,
                   right: MediaQuery.of(context).size.width * 0.2,
                 ),
-                margin: EdgeInsets.only(top: 150.0),
+                margin: const EdgeInsets.only(top: 150.0),
                 width: double.infinity,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
                     backgroundColor: const Color(0xFFEB0145), // Text Color
-                    padding: EdgeInsets.all(22.0),
+                    padding: const EdgeInsets.all(22.0),
                   ),
                   onPressed: () {
                     // Action à effectuer lorsque le bouton est pressé
